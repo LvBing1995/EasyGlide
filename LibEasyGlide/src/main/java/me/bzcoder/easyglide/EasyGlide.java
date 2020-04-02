@@ -11,6 +11,7 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.RawRes;
+import android.util.Log;
 import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -58,7 +59,7 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 public class EasyGlide {
     public static int placeHolderImageView = R.color.transparent;
     public static int circlePlaceholderImageView = R.color.transparent;
-
+    public static boolean isGrayPicture = false;
 
     public static void loadImage(Context context, String url, ImageView imageView) {
         loadImage(context, url, imageView, placeHolderImageView, null, null);
@@ -77,19 +78,20 @@ public class EasyGlide {
     }
 
     public static void loadImage(Context context, String url, ImageView imageView, @DrawableRes int placeHolder, OnProgressListener onProgressListener, RequestListener requestListener) {
-        loadImage(context,
-                GlideConfigImpl
-                        .builder()
-                        .url(url)
-                        .isCropCenter(true)
-                        .isCrossFade(true)
-                        .errorPic(placeHolder)
-                        .placeholder(placeHolder)
-                        .imageView(imageView)
-                        .progressListener(onProgressListener)
-                        .requestListener(requestListener)
-                        .build());
+            loadImage(context,
+                    GlideConfigImpl
+                            .builder()
+                            .url(url)
+                            .isGrayPicture(isGrayPicture)
+                            .isCrossFade(true)
+                            .errorPic(placeHolder)
+                            .placeholder(placeHolder)
+                            .imageView(imageView)
+                            .progressListener(onProgressListener)
+                            .requestListener(requestListener)
+                            .build());
     }
+
 
     public static void loadResizeXYImage(Context context, String url, int resizeX, int resizeY, ImageView imageView) {
         loadResizeXYImage(context, url, resizeX, resizeY, imageView, placeHolderImageView);
@@ -354,7 +356,10 @@ public class EasyGlide {
         if (config.getTransformation() != null) {
             glideRequest.transform(config.getTransformation());
         }
-
+        Log.i("吕冰","config="+config.isGrayPicture());
+        if (config.isGrayPicture()){
+            glideRequest.transform(new CenterCrop(), new GrayscaleTransformation());
+        }
         if (config.getPlaceHolderDrawable() != null) {
             glideRequest.placeholder(config.getPlaceHolderDrawable());
         }

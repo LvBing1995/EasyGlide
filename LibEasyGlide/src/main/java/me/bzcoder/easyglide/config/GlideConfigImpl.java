@@ -32,6 +32,7 @@ public class GlideConfigImpl extends ImageConfig {
     private Drawable placeholderDrawable;
     private int resizeX;
     private boolean isCropCenter;
+    private boolean isGrayPicture;
     private boolean isCropCircle;
     private boolean isFitCenter;
     private DecodeFormat formatType;
@@ -58,6 +59,7 @@ public class GlideConfigImpl extends ImageConfig {
         this.resizeX = builder.resizeX;
         this.resizeY = builder.resizeY;
         this.isCropCenter = builder.isCropCenter;
+        this.isGrayPicture = builder.isGrayPicture;
         this.isCropCircle = builder.isCropCircle;
         this.formatType = builder.formatType;
         this.isFitCenter = builder.isFitCenter;
@@ -106,6 +108,9 @@ public class GlideConfigImpl extends ImageConfig {
 
     public boolean isCropCenter() {
         return isCropCenter;
+    }
+    public boolean isGrayPicture() {
+        return isGrayPicture;
     }
 
     public boolean isCropCircle() {
@@ -180,6 +185,7 @@ public class GlideConfigImpl extends ImageConfig {
         private boolean isClearMemory;
         private boolean isClearDiskCache;
         private boolean isCropCenter;
+        private boolean isGrayPicture;
         private boolean isCropCircle;
         private boolean isCrossFade;
         private DecodeFormat formatType;
@@ -274,6 +280,10 @@ public class GlideConfigImpl extends ImageConfig {
 
         public Builder isCropCenter(boolean isCropCenter) {
             this.isCropCenter = isCropCenter;
+            return this;
+        }
+        public Builder isGrayPicture(boolean isGrayPicture) {
+            this.isGrayPicture = isGrayPicture;
             return this;
         }
 

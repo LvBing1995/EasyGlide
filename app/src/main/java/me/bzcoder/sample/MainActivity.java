@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initView() {
+        EasyGlide.isGrayPicture = true;
         circleProgressView = findViewById(R.id.progressView);
         iv0 = (ImageView) findViewById(R.id.iv_0);
         iv1 = (ImageView) findViewById(R.id.iv_1);
