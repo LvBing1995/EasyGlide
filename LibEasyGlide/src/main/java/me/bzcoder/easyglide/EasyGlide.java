@@ -109,6 +109,7 @@ public class EasyGlide {
         loadImage(context,
                 GlideConfigImpl
                         .builder()
+                        .isGrayPicture(isGrayPicture)
                         .drawableId(drawableId)
                         .isCropCenter(true)
                         .resize(resizeX, resizeY)
@@ -121,7 +122,7 @@ public class EasyGlide {
                 GlideConfigImpl
                         .builder()
                         .url(url)
-                        .isCropCenter(true)
+                        .isGrayPicture(isGrayPicture)
                         .isCrossFade(true)
                         .resize(resizeX, resizeY)
                         .errorPic(placeHolder)
@@ -201,6 +202,7 @@ public class EasyGlide {
                 GlideConfigImpl
                         .builder()
                         .url(url)
+                        .isGrayPicture(isGrayPicture)
                         .transformation(new CenterCrop(), new RoundedCornersTransformation(radius, margin))
                         .isCrossFade(true)
                         .errorPic(placeHolder)
@@ -222,6 +224,7 @@ public class EasyGlide {
                 GlideConfigImpl
                         .builder()
                         .url(url)
+                        .isGrayPicture(isGrayPicture)
                         .transformation(new CircleWithBorderTransformation(borderWidth, borderColor))
                         .isCrossFade(true)
                         .errorPic(placeHolder)
